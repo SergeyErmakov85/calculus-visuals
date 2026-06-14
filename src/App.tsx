@@ -83,6 +83,10 @@ import IntegralsByParts from "./pages/integrals/IntegralsByParts";
 import IntegralsTechniques from "./pages/integrals/IntegralsTechniques";
 import IntegralsApplications from "./pages/integrals/IntegralsApplications";
 
+// ── 2. Пределы (strang #1 + remix #1) ─────────────────────────────────────────
+import LimitsEpsilonDelta from "./pages/limits/LimitsEpsilonDelta";
+import LimitsRemarkable from "./pages/limits/LimitsRemarkable";
+
 // ── 3. Производные (strang #2-4 + remix #5) ───────────────────────────────────
 import DerivativesRules from "./pages/derivatives/DerivativesRules";
 import DerivativesChainRule from "./pages/derivatives/DerivativesChainRule";
@@ -220,6 +224,10 @@ const App = () => (
           <Route path="/integrals/by-parts" element={<IntegralsByParts />} />
           <Route path="/integrals/techniques" element={<IntegralsTechniques />} />
           <Route path="/integrals/applications" element={<IntegralsApplications />} />
+
+          {/* ── 2. Пределы ── */}
+          <Route path="/limits/epsilon-delta" element={<LimitsEpsilonDelta />} />
+          <Route path="/limits/remarkable" element={<LimitsRemarkable />} />
 
           {/* ── 3. Производные ── */}
           <Route path="/derivatives/rules" element={<DerivativesRules />} />
