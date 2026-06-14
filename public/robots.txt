@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://calculus-visuals.vercel.app/sitemap.xml

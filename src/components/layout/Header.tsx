@@ -4,6 +4,7 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { TOPIC_MAP } from "@/content/topicMap";
 import { sectionIcon } from "@/components/navigation/sectionIcons";
+import { GlobalSearch } from "@/components/navigation/GlobalSearch";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -107,16 +108,20 @@ export const Header = () => {
           >
             Справочник
           </Link>
+          <GlobalSearch />
         </nav>
 
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden p-2 text-foreground"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label="Toggle menu"
-        >
-          {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
+        {/* Mobile controls */}
+        <div className="flex items-center gap-1 md:hidden">
+          <GlobalSearch />
+          <button
+            className="p-2 text-foreground"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}

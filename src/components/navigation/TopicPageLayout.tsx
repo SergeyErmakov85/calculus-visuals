@@ -3,12 +3,13 @@
 // Сайдбар раздела + хлебные крошки + заголовок + контент + ←/→ + связанные темы.
 // Используется всеми перенесёнными разделами (статистика, и далее).
 // ─────────────────────────────────────────────────────────────────────────────
-import { ReactNode } from "react";
+import { ReactNode, useRef } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft, ArrowRight, Link2 } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { Breadcrumbs } from "@/components/lesson/Breadcrumbs";
 import { CourseSidebar } from "@/components/navigation/CourseSidebar";
+import { PageTOC } from "@/components/navigation/PageTOC";
 import { getTopic, getSiblingTopics, topicHref } from "@/content/topicMap";
 import { getNextSection } from "@/content/learningPath";
 import { getRelatedTopics } from "@/content/crosslinks";
@@ -30,11 +31,12 @@ export const TopicPageLayout = ({
   const { prev, next, section } = getSiblingTopics(topicId);
   const related = getRelatedTopics(topicId);
   const nextSection = section ? getNextSection(section.id) : undefined;
+  const bodyRef = useRef<HTMLDivElement>(null);
 
   return (
     <Layout>
       <div className="container py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-[260px_1fr] gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-[260px_1fr] xl:grid-cols-[260px_1fr_220px] gap-8">
           {/* Sidebar */}
           <aside className="hidden lg:block">
             <div className="sticky top-20">
@@ -72,7 +74,7 @@ export const TopicPageLayout = ({
             )}
 
             {/* Тело темы */}
-            <div className="space-y-10">{children}</div>
+            <div ref={bodyRef} className="space-y-10">{children}</div>
 
             {/* Связанные темы */}
             {related.length > 0 && (
@@ -145,6 +147,13 @@ export const TopicPageLayout = ({
               )}
             </nav>
           </article>
+
+          {/* Оглавление страницы (TOC) — только на широких экранах */}
+          <aside className="hidden xl:block">
+            <div className="sticky top-20">
+              <PageTOC containerRef={bodyRef} />
+            </div>
+          </aside>
         </div>
       </div>
     </Layout>
