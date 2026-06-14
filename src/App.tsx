@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import SectionHub from "./pages/SectionHub";
@@ -270,6 +270,12 @@ const App = () => (
           <Route path="/statistics/correlation" element={<StatisticsCorrelation />} />
           <Route path="/statistics/factor" element={<StatisticsFactor />} />
           <Route path="/statistics/cluster" element={<StatisticsCluster />} />
+
+          {/* ── Редиректы со старых URL объединённых проектов ── */}
+          <Route path="/section/:id" element={<Navigate to="/" replace />} />
+          <Route path="/tickets" element={<Navigate to="/" replace />} />
+          <Route path="/notes" element={<Navigate to="/" replace />} />
+          <Route path="/progress" element={<Navigate to="/" replace />} />
 
           {/* ── Section hubs (topicMap) — одиночный сегмент, держать перед "*" ── */}
           <Route path="/:sectionId" element={<SectionHub />} />

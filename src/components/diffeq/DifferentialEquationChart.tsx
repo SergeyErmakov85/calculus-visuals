@@ -60,7 +60,7 @@
            y2 = 1 * Math.exp(t * t);
            y3 = 2 * Math.exp(t * t);
            break;
-         case "nonlinear":
+         case "nonlinear": {
            // y = 1/(C - t), where C = 1/y0
            const C1 = 1 / 0.5;
            const C2 = 1 / 1;
@@ -69,6 +69,7 @@
            y2 = t < C2 - 0.05 ? 1 / (C2 - t) : NaN;
            y3 = t < C3 - 0.05 ? 1 / (C3 - t) : NaN;
            break;
+         }
          default:
            y1 = y2 = y3 = 0;
        }
