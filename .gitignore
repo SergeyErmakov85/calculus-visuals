@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Source projects being merged in (each is a separate git repo / scratch material)
+new_materials
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

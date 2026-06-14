@@ -1,7 +1,15 @@
 import { Link, useLocation } from "react-router-dom";
-import { Compass, Menu, X } from "lucide-react";
+import { Compass, Menu, X, ChevronDown } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import { TOPIC_MAP } from "@/content/topicMap";
+import { sectionIcon } from "@/components/navigation/sectionIcons";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from "@/components/ui/dropdown-menu";
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -51,6 +59,27 @@ export const Header = () => {
           >
             Уроки
           </Link>
+          <DropdownMenu>
+            <DropdownMenuTrigger className="flex items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-accent focus:outline-none">
+              Разделы
+              <ChevronDown className="h-3.5 w-3.5" />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="start" className="w-64">
+              {TOPIC_MAP.map((section) => {
+                const Icon = sectionIcon(section.icon);
+                return (
+                  <DropdownMenuItem key={section.id} asChild>
+                    <Link to={section.slug} className="flex items-center gap-2 cursor-pointer">
+                      <Icon className="h-4 w-4 text-accent shrink-0" />
+                      <span className="truncate">
+                        {section.num}. {section.title}
+                      </span>
+                    </Link>
+                  </DropdownMenuItem>
+                );
+              })}
+            </DropdownMenuContent>
+          </DropdownMenu>
           <Link
             to="/guide/0"
             className={cn(
@@ -110,6 +139,22 @@ export const Header = () => {
                 {label}
               </Link>
             ))}
+
+            <div className="pt-2 mt-2 border-t border-border">
+              <p className="text-xs uppercase tracking-widest text-muted-foreground mb-2">
+                Разделы
+              </p>
+              {TOPIC_MAP.map((section) => (
+                <Link
+                  key={section.id}
+                  to={section.slug}
+                  className="block py-1.5 text-sm text-foreground hover:text-accent"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {section.num}. {section.title}
+                </Link>
+              ))}
+            </div>
           </nav>
         </div>
       )}

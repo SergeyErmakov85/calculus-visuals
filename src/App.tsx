@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import SectionHub from "./pages/SectionHub";
 
 // ── Function reference pages (calculus-compass) ──────────────────────────────
 import PolynomialFunctions from "./pages/functions/PolynomialFunctions";
@@ -73,6 +74,43 @@ import GuidePage from "./pages/Module";
 // ── Visualizations ────────────────────────────────────────────────────────────
 import ConfidenceIntervalPage from "./pages/visualizations/ConfidenceIntervalPage";
 import IntegralPage from "./pages/visualizations/IntegralPage";
+
+// ── 4. Интегралы (strang #5,7-11 + remix #6-8) ────────────────────────────────
+import IntegralsDefinite from "./pages/integrals/IntegralsDefinite";
+import IntegralsIndefinite from "./pages/integrals/IntegralsIndefinite";
+import IntegralsSubstitution from "./pages/integrals/IntegralsSubstitution";
+import IntegralsByParts from "./pages/integrals/IntegralsByParts";
+import IntegralsTechniques from "./pages/integrals/IntegralsTechniques";
+import IntegralsApplications from "./pages/integrals/IntegralsApplications";
+
+// ── 6. Дифференциальные уравнения (_-_ гл.1-4) ────────────────────────────────
+import DiffeqFirstOrder from "./pages/diffeq/DiffeqFirstOrder";
+import DiffeqSecondOrder from "./pages/diffeq/DiffeqSecondOrder";
+import DiffeqGraphical from "./pages/diffeq/DiffeqGraphical";
+import DiffeqFourierPde from "./pages/diffeq/DiffeqFourierPde";
+
+// ── 7. Линейная алгебра (_-_ + linear_algebra_add) ────────────────────────────
+import LinearAlgebraMatrices from "./pages/linear-algebra/LinearAlgebraMatrices";
+import LinearAlgebraDeterminants from "./pages/linear-algebra/LinearAlgebraDeterminants";
+import LinearAlgebraVectorSpaces from "./pages/linear-algebra/LinearAlgebraVectorSpaces";
+import LinearAlgebraEigen from "./pages/linear-algebra/LinearAlgebraEigen";
+import LinearAlgebraSvdPca from "./pages/linear-algebra/LinearAlgebraSvdPca";
+import LinearAlgebraApplications from "./pages/linear-algebra/LinearAlgebraApplications";
+
+// ── 8. Теория вероятностей (probability_add + probability_tasks_add) ───────────
+import ProbabilityCombinatorics from "./pages/probability/ProbabilityCombinatorics";
+import ProbabilityEvents from "./pages/probability/ProbabilityEvents";
+import ProbabilityTheorems from "./pages/probability/ProbabilityTheorems";
+import ProbabilityTotalBayes from "./pages/probability/ProbabilityTotalBayes";
+import ProbabilityDistributions from "./pages/probability/ProbabilityDistributions";
+import ProbabilityProblems from "./pages/probability/ProbabilityProblems";
+
+// ── 9. Статистика (statspark) ─────────────────────────────────────────────────
+import StatisticsHypothesis from "./pages/statistics/StatisticsHypothesis";
+import StatisticsGroupTests from "./pages/statistics/StatisticsGroupTests";
+import StatisticsCorrelation from "./pages/statistics/StatisticsCorrelation";
+import StatisticsFactor from "./pages/statistics/StatisticsFactor";
+import StatisticsCluster from "./pages/statistics/StatisticsCluster";
 
 const queryClient = new QueryClient();
 
@@ -161,6 +199,46 @@ const App = () => (
           {/* ── Visualizations ── */}
           <Route path="/visualizations/probability" element={<ConfidenceIntervalPage />} />
           <Route path="/visualizations/integral" element={<IntegralPage />} />
+
+          {/* ── 4. Интегралы ── */}
+          <Route path="/integrals/definite" element={<IntegralsDefinite />} />
+          <Route path="/integrals/indefinite" element={<IntegralsIndefinite />} />
+          <Route path="/integrals/substitution" element={<IntegralsSubstitution />} />
+          <Route path="/integrals/by-parts" element={<IntegralsByParts />} />
+          <Route path="/integrals/techniques" element={<IntegralsTechniques />} />
+          <Route path="/integrals/applications" element={<IntegralsApplications />} />
+
+          {/* ── 6. Дифференциальные уравнения ── */}
+          <Route path="/diffeq/first-order" element={<DiffeqFirstOrder />} />
+          <Route path="/diffeq/second-order" element={<DiffeqSecondOrder />} />
+          <Route path="/diffeq/graphical" element={<DiffeqGraphical />} />
+          <Route path="/diffeq/fourier-pde" element={<DiffeqFourierPde />} />
+
+          {/* ── 7. Линейная алгебра ── */}
+          <Route path="/linear-algebra/matrices" element={<LinearAlgebraMatrices />} />
+          <Route path="/linear-algebra/determinants" element={<LinearAlgebraDeterminants />} />
+          <Route path="/linear-algebra/vector-spaces" element={<LinearAlgebraVectorSpaces />} />
+          <Route path="/linear-algebra/eigen" element={<LinearAlgebraEigen />} />
+          <Route path="/linear-algebra/svd-pca" element={<LinearAlgebraSvdPca />} />
+          <Route path="/linear-algebra/applications" element={<LinearAlgebraApplications />} />
+
+          {/* ── 8. Теория вероятностей ── */}
+          <Route path="/probability/combinatorics" element={<ProbabilityCombinatorics />} />
+          <Route path="/probability/events" element={<ProbabilityEvents />} />
+          <Route path="/probability/theorems" element={<ProbabilityTheorems />} />
+          <Route path="/probability/total-bayes" element={<ProbabilityTotalBayes />} />
+          <Route path="/probability/distributions" element={<ProbabilityDistributions />} />
+          <Route path="/probability/problems" element={<ProbabilityProblems />} />
+
+          {/* ── 9. Статистика ── */}
+          <Route path="/statistics/hypothesis" element={<StatisticsHypothesis />} />
+          <Route path="/statistics/group-tests" element={<StatisticsGroupTests />} />
+          <Route path="/statistics/correlation" element={<StatisticsCorrelation />} />
+          <Route path="/statistics/factor" element={<StatisticsFactor />} />
+          <Route path="/statistics/cluster" element={<StatisticsCluster />} />
+
+          {/* ── Section hubs (topicMap) — одиночный сегмент, держать перед "*" ── */}
+          <Route path="/:sectionId" element={<SectionHub />} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>

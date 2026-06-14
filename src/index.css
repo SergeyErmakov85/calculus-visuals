@@ -6,39 +6,44 @@
 
 @layer base {
   :root {
-    /* Academic Indigo Theme */
-    --background: 210 20% 98%;
-    --foreground: 215 25% 15%;
+    /* Unified statspark theme (светлая) */
+    --background: 210 100% 98%;
+    --foreground: 220 25% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 215 25% 15%;
+    --card-foreground: 220 25% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 215 25% 15%;
+    --popover-foreground: 220 25% 15%;
 
-    /* Deep academic blue */
-    --primary: 210 50% 25%;
-    --primary-foreground: 210 20% 98%;
+    /* Bright blue */
+    --primary: 217 91% 45%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 210 100% 65%;
 
-    /* Soft blue-gray */
-    --secondary: 210 15% 92%;
-    --secondary-foreground: 215 25% 25%;
+    --secondary: 210 100% 96%;
+    --secondary-foreground: 220 25% 15%;
 
-    --muted: 210 15% 95%;
-    --muted-foreground: 215 15% 45%;
+    --muted: 210 50% 94%;
+    --muted-foreground: 220 15% 45%;
 
-    /* Warm gold accent - compass metaphor */
-    --accent: 38 85% 55%;
-    --accent-foreground: 38 90% 15%;
+    /* Cyan accent (statspark) */
+    --accent: 200 100% 50%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 72% 51%;
+    --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 210 20% 88%;
-    --input: 210 20% 88%;
-    --ring: 210 50% 35%;
+    --border: 214 30% 88%;
+    --input: 214 30% 88%;
+    --ring: 217 91% 45%;
 
-    --radius: 0.625rem;
+    --radius: 0.75rem;
+
+    /* statspark signature gradients/shadow */
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 45%), hsl(200 100% 50%));
+    --gradient-subtle: linear-gradient(180deg, hsl(210 100% 98%), hsl(210 100% 96%));
+    --shadow-elegant: 0 4px 20px -2px hsl(217 91% 45% / 0.15);
 
     /* Custom semantic colors */
     --function-1: 220 70% 50%;
@@ -80,44 +85,49 @@
     --shadow-strong: 0 8px 32px -8px hsl(215 25% 15% / 0.16);
 
     /* Sidebar */
-    --sidebar-background: 210 20% 98%;
-    --sidebar-foreground: 215 25% 25%;
-    --sidebar-primary: 210 50% 25%;
-    --sidebar-primary-foreground: 210 20% 98%;
-    --sidebar-accent: 38 85% 55%;
-    --sidebar-accent-foreground: 38 90% 15%;
-    --sidebar-border: 210 20% 88%;
-    --sidebar-ring: 210 50% 35%;
+    --sidebar-background: 210 100% 98%;
+    --sidebar-foreground: 220 25% 25%;
+    --sidebar-primary: 217 91% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 200 100% 50%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 214 30% 88%;
+    --sidebar-ring: 217 91% 45%;
   }
 
   .dark {
-    --background: 220 20% 10%;
-    --foreground: 210 20% 95%;
+    --background: 220 30% 8%;
+    --foreground: 210 30% 95%;
 
-    --card: 220 18% 13%;
-    --card-foreground: 210 20% 95%;
+    --card: 220 25% 12%;
+    --card-foreground: 210 30% 95%;
 
-    --popover: 220 18% 13%;
-    --popover-foreground: 210 20% 95%;
+    --popover: 220 25% 12%;
+    --popover-foreground: 210 30% 95%;
 
-    --primary: 210 60% 60%;
-    --primary-foreground: 220 20% 10%;
+    --primary: 217 91% 55%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 210 100% 70%;
 
-    --secondary: 220 15% 20%;
-    --secondary-foreground: 210 20% 90%;
+    --secondary: 220 25% 15%;
+    --secondary-foreground: 210 30% 95%;
 
-    --muted: 220 15% 18%;
-    --muted-foreground: 210 15% 60%;
+    --muted: 220 25% 15%;
+    --muted-foreground: 215 20% 65%;
 
-    --accent: 38 80% 55%;
-    --accent-foreground: 38 90% 10%;
+    --accent: 200 100% 50%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 65% 45%;
+    --destructive: 0 62.8% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 15% 22%;
-    --input: 220 15% 22%;
-    --ring: 210 60% 50%;
+    --border: 220 25% 20%;
+    --input: 220 25% 20%;
+    --ring: 217 91% 55%;
+
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 35%), hsl(200 100% 40%));
+    --gradient-subtle: linear-gradient(180deg, hsl(220 30% 8%), hsl(220 25% 12%));
+    --shadow-elegant: 0 4px 20px -2px hsl(217 91% 45% / 0.25);
 
     --function-1: 220 80% 65%;
     --function-2: 340 80% 65%;
@@ -130,14 +140,14 @@
     --graph-tertiary: 45 90% 60%;
     --graph-quaternary: 175 65% 50%;
 
-    --sidebar-background: 220 18% 12%;
-    --sidebar-foreground: 210 20% 90%;
-    --sidebar-primary: 210 60% 60%;
-    --sidebar-primary-foreground: 220 20% 10%;
-    --sidebar-accent: 38 80% 55%;
-    --sidebar-accent-foreground: 38 90% 10%;
-    --sidebar-border: 220 15% 22%;
-    --sidebar-ring: 210 60% 50%;
+    --sidebar-background: 220 25% 12%;
+    --sidebar-foreground: 210 30% 90%;
+    --sidebar-primary: 217 91% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 200 100% 50%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 220 25% 20%;
+    --sidebar-ring: 217 91% 55%;
   }
 }
 
@@ -360,6 +370,46 @@
 
   .section-divider {
     @apply border-t border-border my-8;
+  }
+}
+
+/* ── Strang (matanalysis) ported content blocks ── */
+@layer components {
+  .formula-block {
+    @apply border border-border rounded-lg p-4 my-4 overflow-x-auto text-center;
+    background-color: hsl(var(--muted) / 0.4);
+  }
+
+  .section-title {
+    @apply text-3xl font-serif font-bold text-foreground mb-6 pb-3 border-b border-border;
+  }
+
+  .subsection-title {
+    @apply text-xl font-serif font-semibold text-foreground mt-8 mb-4;
+  }
+
+  .important-block {
+    @apply border-l-4 rounded-r-lg p-4 my-4;
+    background-color: hsl(var(--accent) / 0.1);
+    border-color: hsl(var(--accent));
+  }
+
+  .mistake-block {
+    @apply border-l-4 rounded-r-lg p-4 my-4;
+    background-color: hsl(var(--destructive) / 0.1);
+    border-color: hsl(var(--destructive));
+  }
+
+  .tip-block {
+    @apply border-l-4 rounded-r-lg p-4 my-4;
+    background-color: hsl(var(--success) / 0.1);
+    border-color: hsl(var(--success));
+  }
+
+  .example-block {
+    @apply border rounded-lg p-5 my-5;
+    background-color: hsl(var(--primary) / 0.06);
+    border-color: hsl(var(--primary) / 0.3);
   }
 }
 
