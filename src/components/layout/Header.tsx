@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { TOPIC_MAP } from "@/content/topicMap";
 import { sectionIcon } from "@/components/navigation/sectionIcons";
 import { GlobalSearch } from "@/components/navigation/GlobalSearch";
+import { ProgressIndicator } from "@/components/navigation/ProgressIndicator";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -109,10 +110,12 @@ export const Header = () => {
             Справочник
           </Link>
           <GlobalSearch />
+          <ProgressIndicator />
         </nav>
 
         {/* Mobile controls */}
-        <div className="flex items-center gap-1 md:hidden">
+        <div className="flex items-center gap-2 md:hidden">
+          <ProgressIndicator />
           <GlobalSearch />
           <button
             className="p-2 text-foreground"

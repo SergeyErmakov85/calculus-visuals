@@ -10,6 +10,7 @@ import { Layout } from "@/components/layout/Layout";
 import { Breadcrumbs } from "@/components/lesson/Breadcrumbs";
 import { CourseSidebar } from "@/components/navigation/CourseSidebar";
 import { PageTOC } from "@/components/navigation/PageTOC";
+import { CompletionCard } from "@/components/lesson/CompleteButton";
 import { getTopic, getSiblingTopics, topicHref } from "@/content/topicMap";
 import { getNextSection } from "@/content/learningPath";
 import { getRelatedTopics } from "@/content/crosslinks";
@@ -75,6 +76,9 @@ export const TopicPageLayout = ({
 
             {/* Тело темы */}
             <div ref={bodyRef} className="space-y-10">{children}</div>
+
+            {/* Фиксация прогресса по теме (auto-mark при прокрутке ≥90%) */}
+            <CompletionCard lessonId={topicId} />
 
             {/* Связанные темы */}
             {related.length > 0 && (
