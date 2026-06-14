@@ -186,11 +186,11 @@ const series: Section = {
   description: "Последовательности, числовые и степенные ряды, признаки сходимости, ряд Тейлора.",
   sources: ["strang-calculus-ru", "remix-of", "_-_"],
   topics: [
-    t("series", "sequences", "Последовательности и пределы", { level: 2, tags: ["последовательность"], status: "planned" }),
-    t("series", "numeric", "Числовые ряды", { level: 2, tags: ["ряд"], status: "planned" }),
-    t("series", "convergence", "Признаки сходимости", { level: 3, tags: ["ряд", "сходимость"], status: "planned" }),
-    t("series", "power", "Степенные ряды", { level: 3, tags: ["ряд", "степенной"], status: "planned" }),
-    t("series", "taylor", "Ряд Тейлора", { level: 3, tags: ["ряд", "Тейлор", "визуализация"], status: "planned" }),
+    t("series", "sequences", "Последовательности и пределы", { level: 2, tags: ["последовательность"], status: "ready", description: "Сходимость последовательностей, ε-N и основные пределы." }),
+    t("series", "numeric", "Числовые ряды", { level: 2, tags: ["ряд"], status: "ready", description: "Частичные суммы, геометрический и гармонический ряды, необходимое условие." }),
+    t("series", "convergence", "Признаки сходимости", { level: 3, tags: ["ряд", "сходимость"], status: "ready", description: "Сравнение, Д'Аламбер, Коши, Лейбниц и p-ряды." }),
+    t("series", "power", "Степенные ряды", { level: 3, tags: ["ряд", "степенной"], status: "ready", description: "Радиус и интервал сходимости, почленные операции." }),
+    t("series", "taylor", "Ряд Тейлора", { level: 3, tags: ["ряд", "Тейлор"], status: "ready", description: "Ряд Тейлора и Маклорена, ключевые разложения, приложения." }),
   ],
 };
 

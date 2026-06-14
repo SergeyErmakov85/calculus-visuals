@@ -83,6 +83,13 @@ import IntegralsByParts from "./pages/integrals/IntegralsByParts";
 import IntegralsTechniques from "./pages/integrals/IntegralsTechniques";
 import IntegralsApplications from "./pages/integrals/IntegralsApplications";
 
+// ── 5. Последовательности и ряды (strang #12-14 + remix #10-12) ───────────────
+import SeriesSequences from "./pages/series/SeriesSequences";
+import SeriesNumeric from "./pages/series/SeriesNumeric";
+import SeriesConvergence from "./pages/series/SeriesConvergence";
+import SeriesPower from "./pages/series/SeriesPower";
+import SeriesTaylor from "./pages/series/SeriesTaylor";
+
 // ── 6. Дифференциальные уравнения (_-_ гл.1-4) ────────────────────────────────
 import DiffeqFirstOrder from "./pages/diffeq/DiffeqFirstOrder";
 import DiffeqSecondOrder from "./pages/diffeq/DiffeqSecondOrder";
@@ -207,6 +214,13 @@ const App = () => (
           <Route path="/integrals/by-parts" element={<IntegralsByParts />} />
           <Route path="/integrals/techniques" element={<IntegralsTechniques />} />
           <Route path="/integrals/applications" element={<IntegralsApplications />} />
+
+          {/* ── 5. Последовательности и ряды ── */}
+          <Route path="/series/sequences" element={<SeriesSequences />} />
+          <Route path="/series/numeric" element={<SeriesNumeric />} />
+          <Route path="/series/convergence" element={<SeriesConvergence />} />
+          <Route path="/series/power" element={<SeriesPower />} />
+          <Route path="/series/taylor" element={<SeriesTaylor />} />
 
           {/* ── 6. Дифференциальные уравнения ── */}
           <Route path="/diffeq/first-order" element={<DiffeqFirstOrder />} />
