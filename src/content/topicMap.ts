@@ -144,11 +144,11 @@ const derivatives: Section = {
     t("derivatives", "tangent-limit", "Касательная как предел", { level: 1, tags: ["производная", "касательная"], status: "ready", route: "/module/5/tangent-limit" }),
     t("derivatives", "definition", "Определение и геометрический смысл", { level: 1, tags: ["производная"], status: "ready", route: "/module/5/function-derivative-link" }),
     t("derivatives", "rate", "Производная как скорость", { level: 1, tags: ["производная", "скорость"], status: "ready", route: "/module/5/derivative-rate" }),
-    t("derivatives", "rules", "Правила дифференцирования", { level: 2, tags: ["производная", "правила"], status: "planned" }),
-    t("derivatives", "chain-rule", "Цепное правило", { level: 2, tags: ["производная", "цепное правило"], status: "planned" }),
+    t("derivatives", "rules", "Правила дифференцирования", { level: 2, tags: ["производная", "правила"], status: "ready", description: "Степенное правило, производные элементарных функций, произведение и частное." }),
+    t("derivatives", "chain-rule", "Цепное правило", { level: 2, tags: ["производная", "цепное правило"], status: "ready", description: "Дифференцирование сложных функций слой за слоем." }),
     t("derivatives", "extrema", "Экстремумы и исследование функции", { level: 2, tags: ["экстремум", "исследование"], status: "ready", route: "/module/5/extrema" }),
-    t("derivatives", "tangent-normal", "Касательная и нормаль", { level: 2, tags: ["касательная", "нормаль"], status: "planned" }),
-    t("derivatives", "applications", "Применение производных", { level: 3, tags: ["производная", "приложения"], status: "planned" }),
+    t("derivatives", "tangent-normal", "Касательная и нормаль", { level: 2, tags: ["касательная", "нормаль"], status: "ready", description: "Уравнения касательной и нормали через производную в точке." }),
+    t("derivatives", "applications", "Применение производных", { level: 3, tags: ["производная", "приложения"], status: "ready", description: "Оптимизация и поиск наибольших/наименьших значений." }),
   ],
 };
 

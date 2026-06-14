@@ -83,6 +83,12 @@ import IntegralsByParts from "./pages/integrals/IntegralsByParts";
 import IntegralsTechniques from "./pages/integrals/IntegralsTechniques";
 import IntegralsApplications from "./pages/integrals/IntegralsApplications";
 
+// ── 3. Производные (strang #2-4 + remix #5) ───────────────────────────────────
+import DerivativesRules from "./pages/derivatives/DerivativesRules";
+import DerivativesChainRule from "./pages/derivatives/DerivativesChainRule";
+import DerivativesTangentNormal from "./pages/derivatives/DerivativesTangentNormal";
+import DerivativesApplications from "./pages/derivatives/DerivativesApplications";
+
 // ── 5. Последовательности и ряды (strang #12-14 + remix #10-12) ───────────────
 import SeriesSequences from "./pages/series/SeriesSequences";
 import SeriesNumeric from "./pages/series/SeriesNumeric";
@@ -214,6 +220,12 @@ const App = () => (
           <Route path="/integrals/by-parts" element={<IntegralsByParts />} />
           <Route path="/integrals/techniques" element={<IntegralsTechniques />} />
           <Route path="/integrals/applications" element={<IntegralsApplications />} />
+
+          {/* ── 3. Производные ── */}
+          <Route path="/derivatives/rules" element={<DerivativesRules />} />
+          <Route path="/derivatives/chain-rule" element={<DerivativesChainRule />} />
+          <Route path="/derivatives/tangent-normal" element={<DerivativesTangentNormal />} />
+          <Route path="/derivatives/applications" element={<DerivativesApplications />} />
 
           {/* ── 5. Последовательности и ряды ── */}
           <Route path="/series/sequences" element={<SeriesSequences />} />
