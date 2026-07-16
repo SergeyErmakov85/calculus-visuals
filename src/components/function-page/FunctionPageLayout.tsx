@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowLeft, LucideIcon } from "lucide-react";
 import { Header } from "../layout/Header";
 import { Footer } from "../layout/Footer";
+import { SEOHead } from "@/components/lesson/SEOHead";
 
 interface FunctionPageLayoutProps {
   title: string;
@@ -19,6 +20,7 @@ export const FunctionPageLayout = ({
 }: FunctionPageLayoutProps) => {
   return (
     <div className="min-h-screen flex flex-col bg-background">
+      <SEOHead title={`${title} — Справочник функций`} description={description} />
       <Header />
       
       <main className="flex-1">

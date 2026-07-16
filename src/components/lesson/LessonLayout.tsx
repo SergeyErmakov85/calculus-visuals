@@ -1,7 +1,8 @@
 import { ReactNode } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ArrowLeft, ArrowRight, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { SEOHead } from "@/components/lesson/SEOHead";
 import { courseStructure, Module, Lesson } from "@/data/courseStructure";
 
 interface LessonLayoutProps {
@@ -11,8 +12,6 @@ interface LessonLayoutProps {
 }
 
 export const LessonLayout = ({ moduleId, lessonPath, children }: LessonLayoutProps) => {
-  const navigate = useNavigate();
-  
   const module = courseStructure.find((m) => m.id === moduleId);
   const currentLessonIndex = module?.lessons.findIndex((l) => l.path === lessonPath) ?? -1;
   
@@ -43,25 +42,32 @@ export const LessonLayout = ({ moduleId, lessonPath, children }: LessonLayoutPro
 
   return (
     <div className="min-h-screen">
+      <SEOHead
+        title={`${currentLesson.title} — Модуль ${module.id}: ${module.title}`}
+        description={`Урок «${currentLesson.title}» модуля «${module.title}» курса Calculus Compass: теория, интерактивный график и разбор.`}
+      />
       {/* Breadcrumb */}
-      <div className="border-b border-border bg-card/50">
+      <nav aria-label="Хлебные крошки" className="border-b border-border bg-card/50">
         <div className="container py-4">
-          <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <Link to="/" className="hover:text-accent transition-colors">
-              Главная
-            </Link>
-            <span>/</span>
-            <span 
-              className="hover:text-accent transition-colors cursor-pointer"
-              onClick={() => navigate("/")}
-            >
-              Модуль {module.id}: {module.title}
-            </span>
-            <span>/</span>
-            <span className="text-foreground">{currentLesson.title}</span>
-          </div>
+          <ol className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
+            <li>
+              <Link to="/" className="hover:text-accent transition-colors">
+                Главная
+              </Link>
+            </li>
+            <li aria-hidden>/</li>
+            <li>
+              <Link to="/#modules" className="hover:text-accent transition-colors">
+                Модуль {module.id}: {module.title}
+              </Link>
+            </li>
+            <li aria-hidden>/</li>
+            <li aria-current="page" className="text-foreground">
+              {currentLesson.title}
+            </li>
+          </ol>
         </div>
-      </div>
+      </nav>
 
       {/* Module sidebar indicator */}
       <div className="border-b border-border">

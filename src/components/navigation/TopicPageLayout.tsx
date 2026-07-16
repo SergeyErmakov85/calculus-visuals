@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { ArrowLeft, ArrowRight, Link2 } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { Breadcrumbs } from "@/components/lesson/Breadcrumbs";
+import { SEOHead } from "@/components/lesson/SEOHead";
 import { CourseSidebar } from "@/components/navigation/CourseSidebar";
 import { PageTOC } from "@/components/navigation/PageTOC";
 import { CompletionCard } from "@/components/lesson/CompleteButton";
@@ -36,6 +37,15 @@ export const TopicPageLayout = ({
 
   return (
     <Layout>
+      {topic && (
+        <SEOHead
+          title={`${topic.title} — ${section?.title ?? "Calculus Compass"}`}
+          description={
+            topic.description ??
+            `${topic.title}: теория, визуализации и задачи. Раздел «${section?.title}» курса Calculus Compass.`
+          }
+        />
+      )}
       <div className="container py-8">
         <div className="grid grid-cols-1 lg:grid-cols-[260px_1fr] xl:grid-cols-[260px_1fr_220px] gap-8">
           {/* Sidebar */}

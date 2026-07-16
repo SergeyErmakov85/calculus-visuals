@@ -6,6 +6,7 @@ import { Link, useParams } from "react-router-dom";
 import { ArrowRight, ArrowLeft, ArrowUpRight } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { Breadcrumbs } from "@/components/lesson/Breadcrumbs";
+import { SEOHead } from "@/components/lesson/SEOHead";
 import { CourseSidebar } from "@/components/navigation/CourseSidebar";
 import { sectionIcon } from "@/components/navigation/sectionIcons";
 import { Card, CardContent } from "@/components/ui/card";
@@ -85,6 +86,10 @@ const SectionHub = () => {
 
   return (
     <Layout>
+      <SEOHead
+        title={`${section.title} — Calculus Compass`}
+        description={section.description}
+      />
       <div className="container py-8">
         <div className="grid grid-cols-1 lg:grid-cols-[260px_1fr] gap-8">
           {/* Sidebar */}
