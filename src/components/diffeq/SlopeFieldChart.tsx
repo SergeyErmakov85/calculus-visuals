@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useCallback } from "react";
 import { Slider } from "@/components/ui/slider";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
@@ -28,6 +28,11 @@ const slopeFunctions: Record<EquationType, (t: number, y: number) => number> = {
   "custom": (t, y) => t - y,
 };
 
+// Coordinate ranges of the field
+const tMin = -2, tMax = 3;
+const yMin = -2, yMax = 3;
+const margin = 40;
+
 // Analytical solutions for plotting curves
 const solutionFunctions: Record<EquationType, (t: number, y0: number, t0?: number) => number> = {
   "linear": (t, y0) => y0 * Math.exp(-t),
@@ -51,17 +56,18 @@ export function SlopeFieldChart({
   const [showMultipleCurves, setShowMultipleCurves] = useState(true);
 
   const gridSize = 20;
-  const margin = 40;
   const innerWidth = width - 2 * margin;
   const innerHeight = height - 2 * margin;
-  
-  // Define coordinate ranges
-  const tMin = -2, tMax = 3;
-  const yMin = -2, yMax = 3;
 
   // Convert data coordinates to SVG coordinates
-  const toSvgX = (t: number) => margin + ((t - tMin) / (tMax - tMin)) * innerWidth;
-  const toSvgY = (y: number) => margin + ((yMax - y) / (yMax - yMin)) * innerHeight;
+  const toSvgX = useCallback(
+    (t: number) => margin + ((t - tMin) / (tMax - tMin)) * innerWidth,
+    [innerWidth]
+  );
+  const toSvgY = useCallback(
+    (y: number) => margin + ((yMax - y) / (yMax - yMin)) * innerHeight,
+    [innerHeight]
+  );
 
   // Generate slope field arrows
   const slopeField = useMemo(() => {
@@ -91,7 +97,7 @@ export function SlopeFieldChart({
       }
     }
     return arrows;
-  }, [equationType, innerWidth, innerHeight]);
+  }, [equationType, innerWidth, innerHeight, toSvgX, toSvgY]);
 
   // Generate solution curves
   const solutionCurves = useMemo(() => {
@@ -137,7 +143,7 @@ export function SlopeFieldChart({
     });
     
     return curves;
-  }, [equationType, selectedY0, showMultipleCurves, showSolutionCurves]);
+  }, [equationType, selectedY0, showMultipleCurves, showSolutionCurves, toSvgX, toSvgY]);
 
   return (
     <div className="space-y-4">
