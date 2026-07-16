@@ -12,6 +12,12 @@ dist
 dist-ssr
 *.local
 
+# Единый менеджер пакетов — npm (решение аудита 2026-05-20)
+bun.lock
+bun.lockb
+yarn.lock
+pnpm-lock.yaml
+
 # Source projects being merged in (each is a separate git repo / scratch material)
 new_materials
 
