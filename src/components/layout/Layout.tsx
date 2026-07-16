@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { Header } from "./Header";
+import { Footer } from "./Footer";
 
 interface LayoutProps {
   children: ReactNode;
@@ -7,19 +8,18 @@ interface LayoutProps {
 
 export const Layout = ({ children }: LayoutProps) => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background flex flex-col">
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] focus:px-4 focus:py-2 focus:rounded-md focus:bg-background focus:text-accent focus:border focus:border-accent focus:shadow-md"
+      >
+        Перейти к содержимому
+      </a>
       <Header />
-      <main>{children}</main>
-      <footer className="border-t border-border bg-card/50 py-8 mt-16">
-        <div className="container text-center">
-          <p className="text-sm text-muted-foreground">
-            Calculus Compass — курс математического анализа
-          </p>
-          <p className="text-xs text-muted-foreground/70 mt-2">
-            Анализ через форму и график
-          </p>
-        </div>
-      </footer>
+      <main id="main-content" className="flex-1">
+        {children}
+      </main>
+      <Footer />
     </div>
   );
 };

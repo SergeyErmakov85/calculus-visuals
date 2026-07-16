@@ -62,7 +62,7 @@ export const Header = () => {
             Уроки
           </Link>
           <DropdownMenu>
-            <DropdownMenuTrigger className="flex items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-accent focus:outline-none">
+            <DropdownMenuTrigger className="flex items-center gap-1 rounded-md text-sm font-medium text-muted-foreground transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
               Разделы
               <ChevronDown className="h-3.5 w-3.5" />
             </DropdownMenuTrigger>
@@ -118,9 +118,10 @@ export const Header = () => {
           <ProgressIndicator />
           <GlobalSearch />
           <button
-            className="p-2 text-foreground"
+            className="p-2 text-foreground rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle menu"
+            aria-label={isMenuOpen ? "Закрыть меню" : "Открыть меню"}
+            aria-expanded={isMenuOpen}
           >
             {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
