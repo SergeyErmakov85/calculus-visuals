@@ -1,133 +1,139 @@
+import { lazy, Suspense } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { ScrollToTop } from "@/components/layout/ScrollToTop";
+import { PageLoader } from "@/components/layout/PageLoader";
 import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
-import SectionHub from "./pages/SectionHub";
+
+// Все страницы, кроме главной, подгружаются лениво (code splitting):
+// первый экран получает минимальный бандл, разделы догружаются по требованию.
+const NotFound = lazy(() => import("./pages/NotFound"));
+const SectionHub = lazy(() => import("./pages/SectionHub"));
 
 // ── Function reference pages (calculus-compass) ──────────────────────────────
-import PolynomialFunctions from "./pages/functions/PolynomialFunctions";
-import RationalFunctions from "./pages/functions/RationalFunctions";
-import TrigonometricFunctions from "./pages/functions/TrigonometricFunctions";
-import ExponentialFunctions from "./pages/functions/ExponentialFunctions";
-import LogarithmicFunctions from "./pages/functions/LogarithmicFunctions";
-import PiecewiseFunctions from "./pages/functions/PiecewiseFunctions";
-import AbsoluteValueFunctions from "./pages/functions/AbsoluteValueFunctions";
-import SpecialFunctions from "./pages/functions/SpecialFunctions";
+const PolynomialFunctions = lazy(() => import("./pages/functions/PolynomialFunctions"));
+const RationalFunctions = lazy(() => import("./pages/functions/RationalFunctions"));
+const TrigonometricFunctions = lazy(() => import("./pages/functions/TrigonometricFunctions"));
+const ExponentialFunctions = lazy(() => import("./pages/functions/ExponentialFunctions"));
+const LogarithmicFunctions = lazy(() => import("./pages/functions/LogarithmicFunctions"));
+const PiecewiseFunctions = lazy(() => import("./pages/functions/PiecewiseFunctions"));
+const AbsoluteValueFunctions = lazy(() => import("./pages/functions/AbsoluteValueFunctions"));
+const SpecialFunctions = lazy(() => import("./pages/functions/SpecialFunctions"));
 
 // ── Structured lessons (calculus-compass-08) ──────────────────────────────────
 // Module 0 – What is a function
-import FunctionDefinition from "./pages/lessons/Module0/FunctionDefinition";
-import DomainRange from "./pages/lessons/Module0/DomainRange";
-import GraphAnalysis from "./pages/lessons/Module0/GraphAnalysis";
+const FunctionDefinition = lazy(() => import("./pages/lessons/Module0/FunctionDefinition"));
+const DomainRange = lazy(() => import("./pages/lessons/Module0/DomainRange"));
+const GraphAnalysis = lazy(() => import("./pages/lessons/Module0/GraphAnalysis"));
 // Module 1 – Polynomial functions
-import LinearFunctions from "./pages/lessons/Module1/LinearFunctions";
-import QuadraticFunctions from "./pages/lessons/Module1/QuadraticFunctions";
-import CubicFunctions from "./pages/lessons/Module1/CubicFunctions";
-import HigherDegree from "./pages/lessons/Module1/HigherDegree";
+const LinearFunctions = lazy(() => import("./pages/lessons/Module1/LinearFunctions"));
+const QuadraticFunctions = lazy(() => import("./pages/lessons/Module1/QuadraticFunctions"));
+const CubicFunctions = lazy(() => import("./pages/lessons/Module1/CubicFunctions"));
+const HigherDegree = lazy(() => import("./pages/lessons/Module1/HigherDegree"));
 // Module 2 – Rational functions
-import VerticalAsymptotes from "./pages/lessons/Module2/VerticalAsymptotes";
-import HorizontalAsymptotes from "./pages/lessons/Module2/HorizontalAsymptotes";
-import ObliqueAsymptotes from "./pages/lessons/Module2/ObliqueAsymptotes";
-import RemovableDiscontinuities from "./pages/lessons/Module2/RemovableDiscontinuities";
+const VerticalAsymptotes = lazy(() => import("./pages/lessons/Module2/VerticalAsymptotes"));
+const HorizontalAsymptotes = lazy(() => import("./pages/lessons/Module2/HorizontalAsymptotes"));
+const ObliqueAsymptotes = lazy(() => import("./pages/lessons/Module2/ObliqueAsymptotes"));
+const RemovableDiscontinuities = lazy(() => import("./pages/lessons/Module2/RemovableDiscontinuities"));
 // Module 3 – Limits
-import LimitGeometry from "./pages/lessons/Module3/LimitGeometry";
-import OneSidedLimits from "./pages/lessons/Module3/OneSidedLimits";
-import LimitVsValue from "./pages/lessons/Module3/LimitVsValue";
-import LimitAtInfinity from "./pages/lessons/Module3/LimitAtInfinity";
+const LimitGeometry = lazy(() => import("./pages/lessons/Module3/LimitGeometry"));
+const OneSidedLimits = lazy(() => import("./pages/lessons/Module3/OneSidedLimits"));
+const LimitVsValue = lazy(() => import("./pages/lessons/Module3/LimitVsValue"));
+const LimitAtInfinity = lazy(() => import("./pages/lessons/Module3/LimitAtInfinity"));
 // Module 4 – Continuity
-import ContinuityDefinition from "./pages/lessons/Module4/ContinuityDefinition";
-import DiscontinuityTypes from "./pages/lessons/Module4/DiscontinuityTypes";
-import ContinuityGeometry from "./pages/lessons/Module4/ContinuityGeometry";
+const ContinuityDefinition = lazy(() => import("./pages/lessons/Module4/ContinuityDefinition"));
+const DiscontinuityTypes = lazy(() => import("./pages/lessons/Module4/DiscontinuityTypes"));
+const ContinuityGeometry = lazy(() => import("./pages/lessons/Module4/ContinuityGeometry"));
 // Module 5 – Derivative
-import TangentLimit from "./pages/lessons/Module5/TangentLimit";
-import DerivativeRate from "./pages/lessons/Module5/DerivativeRate";
-import FunctionDerivativeLink from "./pages/lessons/Module5/FunctionDerivativeLink";
-import Extrema from "./pages/lessons/Module5/Extrema";
+const TangentLimit = lazy(() => import("./pages/lessons/Module5/TangentLimit"));
+const DerivativeRate = lazy(() => import("./pages/lessons/Module5/DerivativeRate"));
+const FunctionDerivativeLink = lazy(() => import("./pages/lessons/Module5/FunctionDerivativeLink"));
+const Extrema = lazy(() => import("./pages/lessons/Module5/Extrema"));
 // Module 6 – Trigonometric functions
-import SinCos from "./pages/lessons/Module6/SinCos";
-import Periodicity from "./pages/lessons/Module6/Periodicity";
-import Tangent from "./pages/lessons/Module6/Tangent";
-import Transformations from "./pages/lessons/Module6/Transformations";
+const SinCos = lazy(() => import("./pages/lessons/Module6/SinCos"));
+const Periodicity = lazy(() => import("./pages/lessons/Module6/Periodicity"));
+const Tangent = lazy(() => import("./pages/lessons/Module6/Tangent"));
+const Transformations = lazy(() => import("./pages/lessons/Module6/Transformations"));
 // Module 7 – Exponential and logarithmic
-import ExponentialGrowth from "./pages/lessons/Module7/ExponentialGrowth";
-import LinearVsExponential from "./pages/lessons/Module7/LinearVsExponential";
-import Logarithm from "./pages/lessons/Module7/Logarithm";
-import Inverse from "./pages/lessons/Module7/Inverse";
+const ExponentialGrowth = lazy(() => import("./pages/lessons/Module7/ExponentialGrowth"));
+const LinearVsExponential = lazy(() => import("./pages/lessons/Module7/LinearVsExponential"));
+const Logarithm = lazy(() => import("./pages/lessons/Module7/Logarithm"));
+const Inverse = lazy(() => import("./pages/lessons/Module7/Inverse"));
 // Module 8 – Piecewise functions
-import PiecewiseAnalysis from "./pages/lessons/Module8/PiecewiseAnalysis";
-import JunctionPoints from "./pages/lessons/Module8/JunctionPoints";
-import Smoothness from "./pages/lessons/Module8/Smoothness";
+const PiecewiseAnalysis = lazy(() => import("./pages/lessons/Module8/PiecewiseAnalysis"));
+const JunctionPoints = lazy(() => import("./pages/lessons/Module8/JunctionPoints"));
+const Smoothness = lazy(() => import("./pages/lessons/Module8/Smoothness"));
 // Module 9 – Absolute value
-import AbsoluteValue from "./pages/lessons/Module9/AbsoluteValue";
-import CornerPoints from "./pages/lessons/Module9/CornerPoints";
+const AbsoluteValue = lazy(() => import("./pages/lessons/Module9/AbsoluteValue"));
+const CornerPoints = lazy(() => import("./pages/lessons/Module9/CornerPoints"));
 // Module 10 – Limits of intuition
-import Oscillating from "./pages/lessons/Module10/Oscillating";
-import NoLimit from "./pages/lessons/Module10/NoLimit";
-import LimitsOfAnalysis from "./pages/lessons/Module10/LimitsOfAnalysis";
+const Oscillating = lazy(() => import("./pages/lessons/Module10/Oscillating"));
+const NoLimit = lazy(() => import("./pages/lessons/Module10/NoLimit"));
+const LimitsOfAnalysis = lazy(() => import("./pages/lessons/Module10/LimitsOfAnalysis"));
 
 // ── Interactive guide (calculus-compass-guide) ────────────────────────────────
-import GuidePage from "./pages/Module";
+const GuidePage = lazy(() => import("./pages/Module"));
 
 // ── Visualizations ────────────────────────────────────────────────────────────
-import ConfidenceIntervalPage from "./pages/visualizations/ConfidenceIntervalPage";
-import IntegralPage from "./pages/visualizations/IntegralPage";
+const ConfidenceIntervalPage = lazy(() => import("./pages/visualizations/ConfidenceIntervalPage"));
+const IntegralPage = lazy(() => import("./pages/visualizations/IntegralPage"));
 
 // ── 4. Интегралы (strang #5,7-11 + remix #6-8) ────────────────────────────────
-import IntegralsDefinite from "./pages/integrals/IntegralsDefinite";
-import IntegralsIndefinite from "./pages/integrals/IntegralsIndefinite";
-import IntegralsSubstitution from "./pages/integrals/IntegralsSubstitution";
-import IntegralsByParts from "./pages/integrals/IntegralsByParts";
-import IntegralsTechniques from "./pages/integrals/IntegralsTechniques";
-import IntegralsApplications from "./pages/integrals/IntegralsApplications";
+const IntegralsDefinite = lazy(() => import("./pages/integrals/IntegralsDefinite"));
+const IntegralsIndefinite = lazy(() => import("./pages/integrals/IntegralsIndefinite"));
+const IntegralsSubstitution = lazy(() => import("./pages/integrals/IntegralsSubstitution"));
+const IntegralsByParts = lazy(() => import("./pages/integrals/IntegralsByParts"));
+const IntegralsTechniques = lazy(() => import("./pages/integrals/IntegralsTechniques"));
+const IntegralsApplications = lazy(() => import("./pages/integrals/IntegralsApplications"));
 
 // ── 2. Пределы (strang #1 + remix #1) ─────────────────────────────────────────
-import LimitsEpsilonDelta from "./pages/limits/LimitsEpsilonDelta";
-import LimitsRemarkable from "./pages/limits/LimitsRemarkable";
+const LimitsEpsilonDelta = lazy(() => import("./pages/limits/LimitsEpsilonDelta"));
+const LimitsRemarkable = lazy(() => import("./pages/limits/LimitsRemarkable"));
 
 // ── 3. Производные (strang #2-4 + remix #5) ───────────────────────────────────
-import DerivativesRules from "./pages/derivatives/DerivativesRules";
-import DerivativesChainRule from "./pages/derivatives/DerivativesChainRule";
-import DerivativesTangentNormal from "./pages/derivatives/DerivativesTangentNormal";
-import DerivativesApplications from "./pages/derivatives/DerivativesApplications";
+const DerivativesRules = lazy(() => import("./pages/derivatives/DerivativesRules"));
+const DerivativesChainRule = lazy(() => import("./pages/derivatives/DerivativesChainRule"));
+const DerivativesTangentNormal = lazy(() => import("./pages/derivatives/DerivativesTangentNormal"));
+const DerivativesApplications = lazy(() => import("./pages/derivatives/DerivativesApplications"));
 
 // ── 5. Последовательности и ряды (strang #12-14 + remix #10-12) ───────────────
-import SeriesSequences from "./pages/series/SeriesSequences";
-import SeriesNumeric from "./pages/series/SeriesNumeric";
-import SeriesConvergence from "./pages/series/SeriesConvergence";
-import SeriesPower from "./pages/series/SeriesPower";
-import SeriesTaylor from "./pages/series/SeriesTaylor";
+const SeriesSequences = lazy(() => import("./pages/series/SeriesSequences"));
+const SeriesNumeric = lazy(() => import("./pages/series/SeriesNumeric"));
+const SeriesConvergence = lazy(() => import("./pages/series/SeriesConvergence"));
+const SeriesPower = lazy(() => import("./pages/series/SeriesPower"));
+const SeriesTaylor = lazy(() => import("./pages/series/SeriesTaylor"));
 
 // ── 6. Дифференциальные уравнения (_-_ гл.1-4) ────────────────────────────────
-import DiffeqFirstOrder from "./pages/diffeq/DiffeqFirstOrder";
-import DiffeqSecondOrder from "./pages/diffeq/DiffeqSecondOrder";
-import DiffeqGraphical from "./pages/diffeq/DiffeqGraphical";
-import DiffeqFourierPde from "./pages/diffeq/DiffeqFourierPde";
+const DiffeqFirstOrder = lazy(() => import("./pages/diffeq/DiffeqFirstOrder"));
+const DiffeqSecondOrder = lazy(() => import("./pages/diffeq/DiffeqSecondOrder"));
+const DiffeqGraphical = lazy(() => import("./pages/diffeq/DiffeqGraphical"));
+const DiffeqFourierPde = lazy(() => import("./pages/diffeq/DiffeqFourierPde"));
 
 // ── 7. Линейная алгебра (_-_ + linear_algebra_add) ────────────────────────────
-import LinearAlgebraMatrices from "./pages/linear-algebra/LinearAlgebraMatrices";
-import LinearAlgebraDeterminants from "./pages/linear-algebra/LinearAlgebraDeterminants";
-import LinearAlgebraVectorSpaces from "./pages/linear-algebra/LinearAlgebraVectorSpaces";
-import LinearAlgebraEigen from "./pages/linear-algebra/LinearAlgebraEigen";
-import LinearAlgebraSvdPca from "./pages/linear-algebra/LinearAlgebraSvdPca";
-import LinearAlgebraApplications from "./pages/linear-algebra/LinearAlgebraApplications";
+const LinearAlgebraMatrices = lazy(() => import("./pages/linear-algebra/LinearAlgebraMatrices"));
+const LinearAlgebraDeterminants = lazy(() => import("./pages/linear-algebra/LinearAlgebraDeterminants"));
+const LinearAlgebraVectorSpaces = lazy(() => import("./pages/linear-algebra/LinearAlgebraVectorSpaces"));
+const LinearAlgebraEigen = lazy(() => import("./pages/linear-algebra/LinearAlgebraEigen"));
+const LinearAlgebraSvdPca = lazy(() => import("./pages/linear-algebra/LinearAlgebraSvdPca"));
+const LinearAlgebraApplications = lazy(() => import("./pages/linear-algebra/LinearAlgebraApplications"));
 
 // ── 8. Теория вероятностей (probability_add + probability_tasks_add) ───────────
-import ProbabilityCombinatorics from "./pages/probability/ProbabilityCombinatorics";
-import ProbabilityEvents from "./pages/probability/ProbabilityEvents";
-import ProbabilityTheorems from "./pages/probability/ProbabilityTheorems";
-import ProbabilityTotalBayes from "./pages/probability/ProbabilityTotalBayes";
-import ProbabilityDistributions from "./pages/probability/ProbabilityDistributions";
-import ProbabilityProblems from "./pages/probability/ProbabilityProblems";
+const ProbabilityCombinatorics = lazy(() => import("./pages/probability/ProbabilityCombinatorics"));
+const ProbabilityEvents = lazy(() => import("./pages/probability/ProbabilityEvents"));
+const ProbabilityTheorems = lazy(() => import("./pages/probability/ProbabilityTheorems"));
+const ProbabilityTotalBayes = lazy(() => import("./pages/probability/ProbabilityTotalBayes"));
+const ProbabilityDistributions = lazy(() => import("./pages/probability/ProbabilityDistributions"));
+const ProbabilityProblems = lazy(() => import("./pages/probability/ProbabilityProblems"));
 
 // ── 9. Статистика (statspark) ─────────────────────────────────────────────────
-import StatisticsHypothesis from "./pages/statistics/StatisticsHypothesis";
-import StatisticsGroupTests from "./pages/statistics/StatisticsGroupTests";
-import StatisticsCorrelation from "./pages/statistics/StatisticsCorrelation";
-import StatisticsFactor from "./pages/statistics/StatisticsFactor";
-import StatisticsCluster from "./pages/statistics/StatisticsCluster";
+const StatisticsHypothesis = lazy(() => import("./pages/statistics/StatisticsHypothesis"));
+const StatisticsGroupTests = lazy(() => import("./pages/statistics/StatisticsGroupTests"));
+const StatisticsCorrelation = lazy(() => import("./pages/statistics/StatisticsCorrelation"));
+const StatisticsFactor = lazy(() => import("./pages/statistics/StatisticsFactor"));
+const StatisticsCluster = lazy(() => import("./pages/statistics/StatisticsCluster"));
 
 const queryClient = new QueryClient();
 
@@ -136,8 +142,10 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
-        <Routes>
+      <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+        <ScrollToTop />
+        <Suspense fallback={<PageLoader />}>
+          <Routes>
           <Route path="/" element={<Index />} />
 
           {/* ── Function reference ── */}
@@ -281,7 +289,8 @@ const App = () => (
           <Route path="/:sectionId" element={<SectionHub />} />
 
           <Route path="*" element={<NotFound />} />
-        </Routes>
+          </Routes>
+        </Suspense>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
