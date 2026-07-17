@@ -1,39 +1,16 @@
-// Оглавление глав 5–8 курса линейной алгебры (источник: проект `_-_`, Стрэнг).
-// Только структура «номер · заголовок · описание» — формальная теория раскрывается
-// в визуализациях и кросс-ссылках, без дублирования.
+// Оглавления глав 5–8 курса линейной алгебры (источник: проект `_-_`, Стрэнг).
+// Контент подразделов живёт в subsections.ts — здесь только срезы реестра,
+// чтобы страницы тем рендерили оглавление со ссылками на страницы подразделов.
 
-export interface OutlineItem {
-  number: string;
-  title: string;
-  description: string;
-}
+import { SUBSECTIONS, type Subsection } from "@/content/subsections";
 
-export const VECTOR_SPACES: OutlineItem[] = [
-  { number: "5.1", title: "Пространство столбцов матрицы", description: "Определение подпространства и линейные комбинации столбцов" },
-  { number: "5.2", title: "Нуль-пространство матрицы", description: "Решение Av=0, специальные решения и свободные переменные" },
-  { number: "5.3", title: "Полное решение Av=b", description: "Частное решение плюс нуль-пространство" },
-  { number: "5.4", title: "Независимость, базис и размерность", description: "Линейная независимость векторов и размерность пространства" },
-  { number: "5.5", title: "Основная теорема линейной алгебры", description: "Четыре фундаментальных подпространства" },
-];
+/** Элемент оглавления главы; slug ведёт на страницу подраздела. */
+export type OutlineItem = Pick<
+  Subsection,
+  "number" | "title" | "description" | "slug"
+>;
 
-export const EIGEN: OutlineItem[] = [
-  { number: "6.1", title: "Введение в собственные значения", description: "Определение Av=λv и характеристическое уравнение" },
-  { number: "6.2", title: "Диагонализация матрицы", description: "Когда матрица диагонализуема: S⁻¹AS=Λ" },
-  { number: "6.3", title: "Системы дифференциальных уравнений", description: "Решение du/dt=Au через собственные значения" },
-  { number: "6.4", title: "Симметричные матрицы", description: "Действительные собственные значения и ортогональные собственные векторы" },
-  { number: "6.5", title: "Положительно определённые матрицы", description: "Критерии положительной определённости" },
-];
-
-export const SVD_PCA: OutlineItem[] = [
-  { number: "7.1", title: "Сингулярное разложение (SVD)", description: "Разложение A=UΣVᵀ и геометрический смысл" },
-  { number: "7.2", title: "Главные компоненты данных", description: "Сжатие информации и PCA" },
-  { number: "7.3", title: "Линейные преобразования", description: "Матрицы как отображения между пространствами" },
-  { number: "7.4", title: "Замена базиса", description: "Матрица преобразования в новом базисе" },
-];
-
-export const APPLICATIONS: OutlineItem[] = [
-  { number: "8.1", title: "Матрицы и графы", description: "Матрицы смежности и инцидентности" },
-  { number: "8.2", title: "Марковские цепи", description: "Стохастические матрицы и стационарные распределения" },
-  { number: "8.3", title: "Линейное программирование", description: "Симплекс-метод и оптимизация" },
-  { number: "8.4", title: "Преобразование Фурье", description: "Дискретное преобразование и БПФ" },
-];
+export const VECTOR_SPACES: OutlineItem[] = SUBSECTIONS["linear-algebra/vector-spaces"];
+export const EIGEN: OutlineItem[] = SUBSECTIONS["linear-algebra/eigen"];
+export const SVD_PCA: OutlineItem[] = SUBSECTIONS["linear-algebra/svd-pca"];
+export const APPLICATIONS: OutlineItem[] = SUBSECTIONS["linear-algebra/applications"];

@@ -7,19 +7,23 @@ import { writeFileSync, mkdirSync } from "node:fs";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { TOPIC_MAP, topicHref } from "../src/content/topicMap";
+import { SUBSECTIONS } from "../src/content/subsections";
 
 const SITE_URL = (process.env.SITE_URL ?? "https://calculus-visuals.vercel.app").replace(/\/$/, "");
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const publicDir = resolve(__dirname, "../public");
 
-// Собираем уникальные пути: главная + хабы разделов + готовые темы.
+// Собираем уникальные пути: главная + хабы разделов + готовые темы + подразделы.
 const paths = new Set<string>(["/"]);
 for (const section of TOPIC_MAP) {
   paths.add(section.slug);
   for (const topic of section.topics) {
     if (topic.status === "ready") paths.add(topicHref(topic));
   }
+}
+for (const [topicKey, subs] of Object.entries(SUBSECTIONS)) {
+  for (const s of subs) paths.add(`/${topicKey}/${s.slug}`);
 }
 
 const today = new Date().toISOString().slice(0, 10);

@@ -8,7 +8,7 @@ const DiffeqFourierPde = () => (
       <p className="text-muted-foreground">
         Ряды Фурье раскладывают периодическую функцию в сумму синусов и косинусов и служат ключом к уравнениям в частных производных: теплопроводности, волновому и Лапласа.
       </p>
-      <SectionOutline title="Глава 4 · Ряды Фурье и уравнения в частных производных" items={FOURIER_PDE} />
+      <SectionOutline title="Глава 4 · Ряды Фурье и уравнения в частных производных" items={FOURIER_PDE} basePath="/diffeq/fourier-pde" />
     </section>
   </TopicPageLayout>
 );

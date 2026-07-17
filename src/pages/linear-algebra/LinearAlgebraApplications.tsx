@@ -8,7 +8,7 @@ const LinearAlgebraApplications = () => (
       <p className="text-muted-foreground">
         Линейная алгебра — язык приложений: графы и сети, марковские цепи, оптимизация и преобразование Фурье. Везде матрица описывает структуру и динамику системы.
       </p>
-      <SectionOutline title="Глава 8 · Приложения линейной алгебры" items={APPLICATIONS} />
+      <SectionOutline title="Глава 8 · Приложения линейной алгебры" items={APPLICATIONS} basePath="/linear-algebra/applications" />
     </section>
   </TopicPageLayout>
 );

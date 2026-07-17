@@ -8,7 +8,7 @@ const LinearAlgebraVectorSpaces = () => (
       <p className="text-muted-foreground">
         Векторное пространство — множество, замкнутое относительно сложения и умножения на скаляр. Четыре фундаментальных подпространства матрицы описывают всё про решения системы Av=b.
       </p>
-      <SectionOutline title="Глава 5 · Векторные пространства и подпространства" items={VECTOR_SPACES} />
+      <SectionOutline title="Глава 5 · Векторные пространства и подпространства" items={VECTOR_SPACES} basePath="/linear-algebra/vector-spaces" />
     </section>
   </TopicPageLayout>
 );

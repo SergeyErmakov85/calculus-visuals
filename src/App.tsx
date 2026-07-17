@@ -12,6 +12,7 @@ import Index from "./pages/Index";
 // первый экран получает минимальный бандл, разделы догружаются по требованию.
 const NotFound = lazy(() => import("./pages/NotFound"));
 const SectionHub = lazy(() => import("./pages/SectionHub"));
+const SubsectionPage = lazy(() => import("./pages/SubsectionPage"));
 
 // ── Function reference pages (calculus-compass) ──────────────────────────────
 const PolynomialFunctions = lazy(() => import("./pages/functions/PolynomialFunctions"));
@@ -287,6 +288,9 @@ const App = () => (
 
           {/* ── Section hubs (topicMap) — одиночный сегмент, держать перед "*" ── */}
           <Route path="/:sectionId" element={<SectionHub />} />
+
+          {/* ── Страницы подразделов (subsections.ts), напр. /diffeq/first-order/1-1 ── */}
+          <Route path="/:sectionId/:topicSlug/:subSlug" element={<SubsectionPage />} />
 
           <Route path="*" element={<NotFound />} />
           </Routes>

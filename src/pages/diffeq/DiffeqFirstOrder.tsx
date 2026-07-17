@@ -13,7 +13,7 @@ const DiffeqFirstOrder = () => (
     </section>
 
     <section>
-      <SectionOutline title="Глава 1 · ДУ первого порядка" items={FIRST_ORDER} />
+      <SectionOutline title="Глава 1 · ДУ первого порядка" items={FIRST_ORDER} basePath="/diffeq/first-order" />
     </section>
   </TopicPageLayout>
 );

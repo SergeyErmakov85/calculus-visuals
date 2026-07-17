@@ -13,7 +13,7 @@ const LinearAlgebraSvdPca = () => (
     </section>
 
     <section>
-      <SectionOutline title="Глава 7 · SVD и линейные преобразования" items={SVD_PCA} />
+      <SectionOutline title="Глава 7 · SVD и линейные преобразования" items={SVD_PCA} basePath="/linear-algebra/svd-pca" />
     </section>
   </TopicPageLayout>
 );
